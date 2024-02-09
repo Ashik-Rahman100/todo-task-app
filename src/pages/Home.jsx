@@ -1,24 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { RxPlus } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import AllTodos from "../components/AllTodos";
 import Greeting from "../components/ui/Greeting";
+import { DataContext } from "../context/DataContext";
+
 
 
 export default function Home() {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
-
-  // get todo data from local storage
-  useEffect(() => {
-    const items = localStorage.getItem("todoItems");
-    const convertedItems = JSON.parse(items);
-    setData(convertedItems || []);
-  }, []);
-
- console.log("data", data)
 
 
+  const {data, setData} = useContext(DataContext);
+  console.log("data", data)
   return (
     <div className=" w-full relative min-h-screen pb-60 bg-gradient-to-r from-purple-700 to-purple-500">
       <div className="max-w-[1300px] px-4">
@@ -27,7 +21,7 @@ export default function Home() {
           <Greeting />
 
           {/* display all todos */}
-          <AllTodos data = {data} setData={setData} />
+          <AllTodos />
 
           <div
             onClick={() => navigate("/addTodo")}

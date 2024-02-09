@@ -1,12 +1,19 @@
+
+import { useContext } from "react";
 import { IoMdSearch } from "react-icons/io";
+import { DataContext } from "../context/DataContext";
 
-export default function AllTodos({data, setData}) {
 
 
+
+export default function AllTodos() {
+
+const {data, setData} = useContext(DataContext)
+console.log('data', data)
   return (
     <div>
       {/* if have any store data in localstorage then display this section  otherwise did not see any todo task*/}
-      {data.length ? (
+      {data?.length ? (
         <div>
           {/* Filter search input */}
           <div className="max-md:container max-w-[700px] m-auto mt-7 max-sm:mt-5 mb-7 max-sm:mb-5 relative">

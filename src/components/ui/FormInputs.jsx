@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import { DataContext } from "../../context/DataContext";
+
 
 export default function FormInputs() {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
+  const {data, setData} = useContext(DataContext)
+
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
 
