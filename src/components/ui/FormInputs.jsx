@@ -4,10 +4,9 @@ import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import { DataContext } from "../../context/DataContext";
 
-
 export default function FormInputs() {
   const navigate = useNavigate();
-  const {data, setData} = useContext(DataContext)
+  const { data, setData } = useContext(DataContext);
 
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
@@ -21,11 +20,9 @@ export default function FormInputs() {
     let title = e.target.value;
     setTaskName(e.target.value);
 
-    if (title.length > 35) {
+    if (title.length > 35 ) {
       toast.error("Name should be less than or equal to 30 characters");
-    } else {
-      toast.error("");
-    }
+    } 
   };
   const handleDescription = (e) => {
     let description = e.target.value;
@@ -33,9 +30,7 @@ export default function FormInputs() {
 
     if (description.length > 250) {
       toast.error("Description should be less than or equal to 200 characters");
-    } else {
-      toast.error("");
-    }
+    } 
   };
 
   const handleSubmit = (e) => {
@@ -77,9 +72,9 @@ export default function FormInputs() {
 
       localStorage.setItem("todoItems", JSON.stringify([...data, newTask]));
       setData([...data, newTask]);
+      toast.success("Task added successfully");
       setTaskName("");
       setTaskDescription("");
-
       navigate("/");
     }
   };
@@ -123,7 +118,6 @@ export default function FormInputs() {
             className="resize-none border-none
               w-full rounded-xl p-4 max-sm:p-3 mt-1 text-base max-sm:placeholder:text-sm h-48 max-sm:h-36 outline-none"
           ></textarea>
-
         </div>
         <div className="text-center mt-4">
           <button

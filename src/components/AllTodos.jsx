@@ -1,18 +1,13 @@
-
-import { useContext } from "react";
+/* eslint-disable react/prop-types */
 import { IoMdSearch } from "react-icons/io";
-import { DataContext } from "../context/DataContext";
+import Todo from "./Todo";
 
-
-
-
-export default function AllTodos() {
-
-const {data, setData} = useContext(DataContext)
-console.log('data', data)
+export default function AllTodos({ data, setData }) {
+  console.log("data", data.length);
   return (
     <div>
-      {/* if have any store data in localstorage then display this section  otherwise did not see any todo task*/}
+      {/* if have any store data in localstorage then display this section otherwise
+      did not see any todo task */}
       {data?.length ? (
         <div>
           {/* Filter search input */}
@@ -24,6 +19,21 @@ console.log('data', data)
               className="w-full h-14 max-sm:h-12 rounded-xl pl-11 placeholder:text-sm outline-none"
             />
             <IoMdSearch className="absolute top-[50%] left-3 -translate-y-[50%] text-purple-600 text-2xl max-sm:text-xl" />
+          </div>
+
+          {/* Display todo card */}
+          <div>
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-sm:gap-3 pb-5">
+              {data?.map((todo, index) => (
+                <Todo
+                  key={index}
+                  index={index}
+                  todo={todo}
+                  data={data}
+                  setData={setData}
+                />
+              ))}
+            </div>
           </div>
         </div>
       ) : (
