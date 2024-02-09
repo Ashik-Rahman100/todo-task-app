@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 import { SlOptionsVertical } from "react-icons/sl";
+import TaskOption from "./ui/TaskOption";
+
 
 export default function Todo({
   index,
@@ -73,7 +75,15 @@ export default function Todo({
         <div
           className={`${openOptions ? "animationActive" : "animationUnactive"}`}
         >
-          
+           {openOptions && (
+            <TaskOption
+              index={index}
+              todo={todo}
+              data={data}
+              setData={setData}
+              setOpenOptions={setOpenOptions}
+            />
+          )}
         </div>
       </div>
     </div>
