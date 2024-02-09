@@ -7,6 +7,8 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
 
   const [data, setData] = useState([]);
+  const [index,setIndex] = useState(null);
+  const [edit,setEdit] = useState({})
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("todoItems"));
@@ -16,6 +18,10 @@ export const DataProvider = ({ children }) => {
   const value = {
     data,
     setData,
+    setIndex,
+    index,
+    edit,
+    setEdit
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

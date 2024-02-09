@@ -22,7 +22,7 @@ export default function TaskOption({
     const deleteData = data.filter((val) => val.id !== isData.id);
     setData(deleteData);
     localStorage.setItem("todoItems", JSON.stringify(deleteData));
-    toast.error(isData.title, "Deleted");
+    toast.error("Successfully Deleted.");
     setOpenOptions(false);
   };
 
@@ -58,7 +58,7 @@ export default function TaskOption({
           }}
         >
           <Link
-            to={"/edit"}
+            to={"/editTodo"}
             className=" max-sm:text-sm flex items-center gap-2 cursor-pointer hover:bg-slate-100 py-3  px-2 rounded-md"
           >
             <RiEdit2Fill className=" text-2xl max-sm:text-xl text-slate-700" />
@@ -74,7 +74,7 @@ export default function TaskOption({
         </li>
         <li>
           <Link
-            to={`/todo/${todo.id}`}
+            to={`/detailTodo/${todo.id}`}
             className=" max-sm:text-sm flex items-center gap-2 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
           >
             <BiTask className=" text-2xl max-sm:text-xl text-slate-700" />

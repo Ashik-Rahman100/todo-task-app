@@ -3,7 +3,7 @@ import { IoMdSearch } from "react-icons/io";
 import Todo from "./Todo";
 
 export default function AllTodos({ data, setData }) {
-  console.log("data", data.length);
+  // console.log("data", data.length);
   return (
     <div>
       {/* if have any store data in localstorage then display this section otherwise
