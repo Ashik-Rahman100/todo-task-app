@@ -1,7 +1,10 @@
 
 
 export default function AllTodos() {
+
   return (
-    <div>AllTodos</div>
+    <div>
+      <h2>Display todo</h2>
+    </div>
   )
 }
